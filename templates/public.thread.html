@@ -1,0 +1,27 @@
+{{ define "content" }}
+
+<li>why?</li>
+<li>one</li>
+<li>two</li>
+<li>three</li>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span class="lead"> <i class="fa fa-comment-o"></i> {{ .Topic }}</span>
+    <div class="pull-right">
+      Started by user{{ .UserId }}
+    </div>
+  </div>
+  
+  {{ range .Posts }}
+  <div class="panel-body">
+    <span class="lead"> <i class="fa fa-comment"></i> {{ .Body }}</span>
+    <div class="pull-right">
+      {{ .UserId }}
+    </div>    
+  </div>
+  {{ end }}    
+
+</div>
+
+{{ end }}

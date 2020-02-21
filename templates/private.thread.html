@@ -1,0 +1,47 @@
+{{ define "content" }}
+
+<li>private</li>
+<li>one</li>
+<li>two</li>
+<li>three</li>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span class="lead"> <i class="fa fa-comment-o"></i> {{ .Topic }}</span>
+    <div class="pull-right">
+      Started by user{{ .UserId  }}
+    </div>
+  </div>
+
+  {{ range .Posts }}
+  <div class="panel-body">
+    <span class="lead"> <i class="fa fa-comment"></i> {{ .Body }}</span>
+    <div class="pull-right">
+      comment by user{{ .UserId }}
+    </div>
+  </div>
+  {{ end }}
+
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <span class="lead"> <i class="fa fa-comment-o"></i>you can write your reply here</span>
+  </div>
+
+  <div class="panel-body">
+    <form role="form" action="/thread/post" method="post">
+      <div class="form-group">
+        <textarea class="form-control" name="body" id="body" placeholder="Write your reply here" rows="3"></textarea>
+        <input type="hidden" name="uuid" value="{{ .Uuid }}">
+        <br />
+        <button class="btn btn-primary pull-right" type="submit">Reply</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+{{ end }}
